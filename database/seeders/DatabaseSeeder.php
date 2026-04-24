@@ -45,9 +45,12 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Cooling',               'slug' => 'cooling',            'description' => 'Air coolers, AIO liquid coolers, and case fans.'],
         ];
 
-        foreach ($categories as $cat) {
-            Category::create(array_merge($cat, ['is_active' => true]));
-        }
+       foreach ($categories as $cat) {
+    Category::firstOrCreate(
+        ['slug' => $cat['slug']],
+        array_merge($cat, ['is_active' => true])
+    );
+}
 
         // Products
         $products = [
