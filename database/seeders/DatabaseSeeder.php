@@ -14,29 +14,27 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Admin user
-        User::create([
+public function run(): void
+{
+    // Admin user
+    User::firstOrCreate(
+        ['email' => 'admin@pcstore.com'],
+        [
             'name'     => 'Admin User',
-            'email'    => 'admin@pcstore.com',
             'password' => Hash::make('password'),
             'role'     => 'admin',
-        ]);
+        ]
+    );
 
-        // Customer user
-        User::create([
+    // Customer user
+    User::firstOrCreate(
+        ['email' => 'john@example.com'],
+        [
             'name'     => 'John Doe',
-            'email'    => 'john@example.com',
             'password' => Hash::make('password'),
             'role'     => 'customer',
-        ]);
-
-        User::firstOrCreate(
-    ['email' => 'admin@pcstore.com'],
-    [
-        'name' => 'Admin User',
-        'password' => bcrypt('your-password'),
-        'role' => 'admin',
-    ]
-);
+        ]
+    );
 
         // Categories
         $categories = [
