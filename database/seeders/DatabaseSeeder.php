@@ -193,11 +193,14 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($products as $p) {
-            Product::create(array_merge($p, [
-                'slug'      => Str::slug($p['name']) . '-' . Str::random(4),
-                'is_active' => true,
-                'specs'     => $p['specs'],
-            ]));
-        }
+    Product::firstOrCreate(
+        ['sku' => $p['sku']],
+        array_merge($p, [
+            'slug'      => Str::slug($p['name']) . '-' . Str::random(4),
+            'is_active' => true,
+            'specs'     => $p['specs'],
+        ])
+    );
+}
     }
 }
