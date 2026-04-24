@@ -29,6 +29,15 @@ class DatabaseSeeder extends Seeder
             'role'     => 'customer',
         ]);
 
+        User::firstOrCreate(
+    ['email' => 'admin@pcstore.com'],
+    [
+        'name' => 'Admin User',
+        'password' => bcrypt('your-password'),
+        'role' => 'admin',
+    ]
+);
+
         // Categories
         $categories = [
             ['name' => 'CPUs & Processors',    'slug' => 'cpus-processors',    'description' => 'Desktop and server processors from AMD and Intel.'],
