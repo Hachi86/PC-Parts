@@ -13,9 +13,6 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Admin user
-public function run(): void
-{
     // Admin user
     User::firstOrCreate(
         ['email' => 'admin@pcstore.com'],
